@@ -13,7 +13,6 @@ def getPrayerTimes(url):
 
 def getWeather(url):
     html = requests.get(url)
-
     soup = BeautifulSoup(html.text,'html.parser')
     temp = soup.find_all("span", class_="wxo-metric-hide")[1]
     return temp
