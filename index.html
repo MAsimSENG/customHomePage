@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+<script type="text/javascript" src="">
+
+</script>
+<div id="prayerTimes">
+<table>
+
+    {{ rows|safe}}
+
+</table>
+</div>
+
+<div id="weather">
+
+<h3> Weather today </h3>
+
+  <b> {{temp|safe}}</b>
+
+</div>
+
+<div id="todo_list">
+<form action="/todo" method="post">
+  <input type="text"  name ="addthis">
+  <input type="submit">
+</form>
+
+  <ul>
+    {% for item in list %}
+
+      <li ondblclick="(function(e){
+
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.open('POST', '/del', true);
+
+      xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+      xhttp.send(e.innerText);
+})(this)">
+
+        {{item[0]}}
+
+       </li>
+    {%endfor%}
+  <ul>
+
+
+</div>
+
+
+
+
+  </body>
+</html>
